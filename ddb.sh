@@ -10,8 +10,6 @@ EOWARN
 
 CONF=/data/dalmatinerdb/etc/dalmatinerdb.conf
 
-set -x
-
 export HOST=$(ping -c1 $HOSTNAME | awk '/^PING/ {print $3}' | sed 's/[():]//g')||'127.0.0.1'
 
 export CLUSTER_NAME=${CLUSTER_NAME:-ddb}
@@ -32,9 +30,6 @@ sed -i \
 
 echo "ring_size = ${RING_SIZE}" >> $CONF
 
-
-#set +x
-
 admin=/dalmatinerdb/bin/ddb-admin
 ddb=/dalmatinerdb/bin/ddb
 
@@ -48,6 +43,14 @@ then
     sleep $(( ( RANDOM % 10 )  + 5 ))
     $admin cluster plan
     $admin cluster commit
+else
+    IFS=';' read -r -a buckets <<< "${BUCKETS}"
+    for bucket in "${buckets[@]}"
+    do
+        $admin buckets create ${bucket}
+    done
 fi
+
+$admin buckets list
 
 tail -n 1024 -f /data/dalmatinerdb/log/console.log
