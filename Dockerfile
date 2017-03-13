@@ -7,7 +7,7 @@ MAINTAINER Heinz N. Gies <heinz@project-fifo.net>
 ##
 ###################
 
-ENV DDB_VSN=0.3.1
+ENV DDB_VSN=0.3.1p1
 ENV DDB_PATH=/dalmatinerdb
 ENV DDB_REF=$DDB_VSN
 
