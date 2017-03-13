@@ -1,2 +1,2 @@
 all:
-	docker build -t ddb .
+	docker build -t ddb:test .
