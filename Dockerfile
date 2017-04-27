@@ -9,7 +9,7 @@ MAINTAINER Heinz N. Gies <heinz@project-fifo.net>
 
 ENV DDB_VSN=test
 ENV DDB_PATH=/dalmatinerdb
-ENV DDB_REF=70cf4f5
+ENV DDB_REF=bf0afbb
 
 RUN cd / \
     && env GIT_SSL_NO_VERIFY=true git clone -b $DDB_VSN http://github.com/dalmatinerdb/dalmatinerdb.git dalmatinerdb.git
@@ -26,6 +26,7 @@ RUN mkdir -p /data/dalmatinerdb/etc \
     && mkdir -p /data/dalmatinerdb/db \
     && mkdir -p /data/dalmatinerdb/log \
     && cp $DDB_PATH/etc/dalmatinerdb.conf.example /data/dalmatinerdb/etc/dalmatinerdb.conf \
+    && echo "none() -> drop." > /data/dalmatinerdb/etc/rules.ot \
     && sed -i -e '/RUNNER_USER=dalmatiner/d' $DDB_PATH/bin/ddb \
     && sed -i -e '/RUNNER_USER=dalmatiner/d' $DDB_PATH/bin/ddb-admin
 
