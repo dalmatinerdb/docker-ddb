@@ -18,6 +18,8 @@ export COORDINATOR_NODE=${COORDINATOR_NODE:-$HOSTNAME}
 
 export COORDINATOR_NODE_HOST=$(ping -c1 $COORDINATOR_NODE | awk '/^PING/ {print $3}' | sed 's/[():]//g')||'127.0.0.1'
 
+export RUNNER_USER=root
+
 
 export RING_SIZE=${RING_SIZE:-64}
 
