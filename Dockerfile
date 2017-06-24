@@ -27,8 +27,8 @@ RUN mkdir -p /data/dalmatinerdb/etc \
     && mkdir -p /data/dalmatinerdb/log \
     && cp $DDB_PATH/etc/dalmatinerdb.conf /data/dalmatinerdb/etc/dalmatinerdb.conf \
     && echo "none() -> drop." > /data/dalmatinerdb/etc/rules.ot \
-    && sed -i -e '/RUNNER_USER=dalmatiner/d' $DDB_PATH/bin/ddb \
-    && sed -i -e '/RUNNER_USER=dalmatiner/d' $DDB_PATH/bin/ddb-admin
+    && sed -i -e '/RUNNER_USER=/d' $DDB_PATH/bin/ddb \
+    && sed -i -e '/RUNNER_USER=/d' $DDB_PATH/bin/ddb-admin
 
 COPY ddb.sh /
 
