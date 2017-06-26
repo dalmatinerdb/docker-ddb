@@ -7,8 +7,9 @@ MAINTAINER Heinz N. Gies <heinz@project-fifo.net>
 ##
 ###################
 
-ENV DDB_VSN=0.3.2p2
+ENV DDB_VSN=test
 ENV DDB_PATH=/dalmatinerdb
+ENV DDB_REF=bda6d9b
 
 RUN cd / \
     && env GIT_SSL_NO_VERIFY=true git clone -b $DDB_VSN http://github.com/dalmatinerdb/dalmatinerdb.git dalmatinerdb.git
